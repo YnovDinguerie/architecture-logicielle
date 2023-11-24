@@ -13,18 +13,23 @@ describe('Rover Class Tests', () => {
     expect(rover.position).toEqual(initialPosition);
   });
 
-//   it('should turn to the specified orientation', () => {
-//     rover.turn();
-//     expect(rover.orientation).toBe(2);
-
-//     rover.turn(Orientation.Est);
-//     expect(rover.orientation).toBe(1);
-//   });
-
-  it('should move forward or backward correctly based on orientation', () => {
+  it('should move forward based on orientation', () => {
     rover.move(1);
     expect(rover.position).toEqual({ x: 0, y: 1 });
   });
 
-  // Add more test cases as needed for other scenarios
+  it('should move backward based on orientation', () => {
+    rover.move(-1);
+    expect(rover.position).toEqual({ x: 0, y: -1 });
+  })
+  
+  it('should turn right', () => {
+    rover.turn(90)
+    expect(rover.orientation).toBe(90)
+  })
+
+  it('should turn left', () => {
+    rover.turn(-90)
+    expect(rover.orientation).toBe(-90)
+  })
 });
