@@ -1,72 +1,83 @@
+import { Position } from "./Position";
+import { Cardinals, Orientation } from "./Orientation";
+import { Direction } from "./Direction";
+import { Map } from "./Map";
 
-export enum Orientation {
-    Nord = 0,
-    Est = 90,
-    Sud = 180,
-    Ouest = -90
-}
+class Rover {
 
-export enum Direction {
-    Forward = 1,
-    Backward = -1
-}
+    private readonly _map: Map;
+    private readonly _orientation: Orientation;
 
-export interface Position {
-    x: number;
-    y: number;
-}
-
-interface IRover {
-    orientation: Orientation;
-    position: Position;
-}
-
-interface IMap {
-    width: number;
-    height: number;
-}
-
-const defaultMap: IMap = {
-    width: 5,
-    height: 4
-}
-
-class Rover implements IRover {
-
-    private readonly map: IMap;
+    public readonly position: Position;
     static Nord: Rover;
 
-    constructor(public orientation: Orientation, public position: Position) {
-        this.orientation = orientation
-        this.position = position
-        this.map = defaultMap;
+    constructor(orientation: Orientation, position: Position, map: Map) {
+        this._orientation = orientation;
+        this.position = position;
+        this._map = map;
     }
 
-    turn(orientation: Orientation): Rover {
-        this.orientation = orientation;
-        return this
+    turn(direction: 'right' | 'left') {
+        this._orientation.turn(direction)
     }
-
-    move(direction: Direction): Rover {
-        const movementMap: Record<Orientation, Position> = {
-            [Orientation.Nord]: { x: this.position.x, y: this.position.y + direction },
-            [Orientation.Sud]: { x: this.position.x, y: this.position.y - direction },
-            [Orientation.Est]: { x: this.position.x + direction, y: this.position.y },
-            [Orientation.Ouest]: { x: this.position.x - direction, y: this.position.y },
+    move(direction: 1 | -1): Rover {
+        const movementMap: Record<Cardinals, Position> = {
+            [Cardinals.Nord]: { x: this.position.x, y: this.position.y + direction },
+            [Cardinals.Sud]: { x: this.position.x, y: this.position.y - direction },
+            [Cardinals.Est]: { x: this.position.x + direction, y: this.position.y },
+            [Cardinals.Ouest]: { x: this.position.x - direction, y: this.position.y },
         };
+        const newPosition: Position = movementMap[this._orientation.getOrientation()];
+        console.log(newPosition)
 
-        // Obtenez la nouvelle position en fonction de l'orientation
-        const newPosition = movementMap[this.orientation];
-
-        // Ajustez la position si elle dépasse les limites de la carte
-        this.position.x = (newPosition.x + this.map.width) % this.map.width;
-        this.position.y = (newPosition.y + this.map.height) % this.map.height;
+        this.position.x = (newPosition.x + this._map.width) % this._map.width;
+        this.position.y = (newPosition.y + this._map.height) % this._map.height;
 
         return this
     }
 }
 
-
-
-
 export default Rover
+
+
+
+// import { Position } from "./Position";
+
+// export class Orientation {
+//     static Nord: Orientation = new Orientation(new Position(0, 1));
+//     static Sud: Orientation = new Orientation(new Position(0, -1));
+//     static Est: Orientation = new Orientation(new Position(1, 0));
+//     static Ouest: Orientation = new Orientation(new Position(-1, 0));
+
+//     private _vecteur: Position;
+
+//     private constructor(vecteur: Position) {
+//         this._vecteur = vecteur;
+//     }
+
+//     public Est(): Orientation {
+//         if (this == Orientation.Nord) return Orientation.Est;
+//         if (this == Orientation.Est) return Orientation.Sud;
+//         if (this == Orientation.Sud) return Orientation.Ouest;
+//         return Orientation.Nord;
+//     }
+
+//     public Appliquer(position: Position): Position {
+//         return this._vecteur.add(position);
+//     }
+
+//     public Oppose() {
+//         return this.Est().Est();
+//     }
+
+//     public Ouest() {
+//         return this.Oppose().Est();
+//     }
+
+//     public toString() {
+//         if (this == Orientation.Nord) return "Nord";
+//         if (this == Orientation.Est) return "Est";
+//         if (this == Orientation.Sud) return "Sud";
+//         return "Ouest";
+//     }
+// }

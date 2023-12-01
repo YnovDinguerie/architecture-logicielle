@@ -27,29 +27,5 @@ describe('Un Rover peut tourner', () => {
             roverTémoin = roverTémoin.move(1);
 
             expect(roverTesté.position).toEqual(roverTémoin.position);
-        });
-
-    // test.each([
-    //     [Orientation.Est, Orientation.Nord],
-    //     [Orientation.Sud, Orientation.Est],
-    //     [Orientation.Ouest, Orientation.Sud],
-    //     [Orientation.Nord, Orientation.Ouest],
-    // ])("ETANT DONNE un rover orienté {orientationTestée}" +
-    //     "QUAND il tourne a gauche et avance" +
-    //     "ALORS son comportement est le même qu'un Rover orienté {orientationSuivanteAntihoraire} faisant de même",
-    //     (orientationTestée: Orientation, orientationSuivanteHoraire: Orientation) => {
-
-    //         let roverTesté = new RoverBuilder()
-    //             .Orienté(orientationTestée)
-    //             .Build();
-
-    //         let roverTémoin = new RoverBuilder()
-    //             .Orienté(orientationSuivanteHoraire)
-    //             .Build();
-
-    //         roverTesté = roverTesté.TournerAGauche().Avancer();
-    //         roverTémoin = roverTémoin.Avancer();
-
-    //         expect(roverTesté.Position).toEqual(roverTémoin.Position);
-    //     });
-});
+        })
+})

@@ -1,4 +1,5 @@
-import Rover, { Orientation, Position } from "../../Rover";
+import { Position } from "../../Position";
+import Rover, { Orientation } from "../../Rover";
 
 export class RoverBuilder {
 
