@@ -1,5 +1,4 @@
-import { Orientation } from "../Rover";
-// import { multiplyAndFlatten } from "./utilities/CartesianData";
+import { Direction, Orientation } from "../Rover";
 import { RoverBuilder } from "./utilities/RoverBuilder";
 
 const interestingCases = [
@@ -12,52 +11,55 @@ const interestingCases = [
 test.each(interestingCases)(
     'ETANT DONNE un Rover orienté Nord atterrissant en (x, y) ' +
     'QUAND on le fait avancer ' +
-    'ALORS son x augmente de 1 ' +
-    'ET son y reste la même',
+    'ALORS son y augmente de 1 ' +
+    'ET son x reste la même',
     (x, y) => {
         let rover = new RoverBuilder()
             .AyantPourPosition(x, y)
             .Orienté(Orientation.Nord)
             .Build()
 
-        rover.move(1);
+        rover.move(Direction.Forward);
 
         expect(rover.position.x).toBe(x);
         expect(rover.position.y).toBe(y + 1);
     });
 
 
-test.each(interestingCases)('ETANT DONNE un Rover orienté Sud atterrissant en (x, y) ' +
+test.each(interestingCases)(
+    'ETANT DONNE un Rover orienté Sud atterrissant en (x, y) ' +
     'QUAND on le fait avancer ' +
-    'ALORS son x diminue de 1 ' +
-    'ET son y reste la même', (x, y) => {
+    'ALORS son y diminue de 1 ' +
+    'ET son x reste la même', (x, y) => {
         let rover = new RoverBuilder()
             .AyantPourPosition(x, y)
             .Orienté(Orientation.Sud)
             .Build()
 
-        rover.move(1);
+        rover.move(Direction.Forward);
 
         expect(rover.position.x).toBe(x);
         expect(rover.position.y).toBe(y - 1);
     });
 
-test.each(interestingCases)('ETANT DONNE un Rover orienté Est atterrissant en (x, y) ' +
+test.each(interestingCases)(
+    'ETANT DONNE un Rover orienté Est atterrissant en (x, y) ' +
     'QUAND on le fait avancer ' +
-    'ALORS son y augmente de 1 ' +
+    'ALORS son x augmente de 1 ' +
     'ET son y reste la même', (x, y) => {
         let rover = new RoverBuilder()
             .AyantPourPosition(x, y)
             .Orienté(Orientation.Est)
             .Build()
 
-        rover.move(1);
+        rover.move(Direction.Forward);
 
-        expect(rover.position.x).toBe(x);
-        expect(rover.position.y).toBe(y + 1);
+        expect(rover.position.x).toBe(x + 1);
+        expect(rover.position.y).toBe(y);
     });
 
-test.each(interestingCases)('ETANT DONNE un Rover orienté Ouest atterrissant en (x, y) ' +
+test.each(interestingCases)(
+    'ETANT DONNE un Rover orienté Ouest atterrissant en (x, y) ' +
     'QUAND on le fait avancer ' +
     'ALORS son x diminue de 1 ' +
     'ET son y reste la même', (x, y) => {
@@ -66,7 +68,7 @@ test.each(interestingCases)('ETANT DONNE un Rover orienté Ouest atterrissant en
             .Orienté(Orientation.Ouest)
             .Build()
 
-        rover.move(1);
+        rover.move(Direction.Forward);
 
         expect(rover.position.x).toBe(x - 1);
         expect(rover.position.y).toBe(y);
