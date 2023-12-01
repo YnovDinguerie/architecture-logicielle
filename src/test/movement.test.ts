@@ -12,8 +12,8 @@ const interestingCases = [
 test.each(interestingCases)(
     'ETANT DONNE un Rover orienté Nord atterrissant en (x, y) ' +
     'QUAND on le fait avancer ' +
-    'ALORS sa x augmente de 1 ' +
-    'ET sa y reste la même',
+    'ALORS son x augmente de 1 ' +
+    'ET son y reste la même',
     (x, y) => {
         let rover = new RoverBuilder()
             .AyantPourPosition(x, y)
@@ -29,8 +29,8 @@ test.each(interestingCases)(
 
 test.each(interestingCases)('ETANT DONNE un Rover orienté Sud atterrissant en (x, y) ' +
     'QUAND on le fait avancer ' +
-    'ALORS sa x diminue de 1 ' +
-    'ET sa y reste la même', (x, y) => {
+    'ALORS son x diminue de 1 ' +
+    'ET son y reste la même', (x, y) => {
         let rover = new RoverBuilder()
             .AyantPourPosition(x, y)
             .Orienté(Orientation.Sud)
@@ -44,8 +44,8 @@ test.each(interestingCases)('ETANT DONNE un Rover orienté Sud atterrissant en (
 
 test.each(interestingCases)('ETANT DONNE un Rover orienté Est atterrissant en (x, y) ' +
     'QUAND on le fait avancer ' +
-    'ALORS sa y augmente de 1 ' +
-    'ET sa y reste la même', (x, y) => {
+    'ALORS son y augmente de 1 ' +
+    'ET son y reste la même', (x, y) => {
         let rover = new RoverBuilder()
             .AyantPourPosition(x, y)
             .Orienté(Orientation.Est)
@@ -59,8 +59,8 @@ test.each(interestingCases)('ETANT DONNE un Rover orienté Est atterrissant en (
 
 test.each(interestingCases)('ETANT DONNE un Rover orienté Ouest atterrissant en (x, y) ' +
     'QUAND on le fait avancer ' +
-    'ALORS sa x diminue de 1 ' +
-    'ET sa y reste la même', (x, y) => {
+    'ALORS son x diminue de 1 ' +
+    'ET son y reste la même', (x, y) => {
         let rover = new RoverBuilder()
             .AyantPourPosition(x, y)
             .Orienté(Orientation.Ouest)
