@@ -1,3 +1,4 @@
+// Objet valeur
 export enum Cardinals {
     Nord = 0,
     Est = 90,
@@ -5,19 +6,30 @@ export enum Cardinals {
     Ouest = 270
 }
 
+// Objet valeur
 export class Orientation {
-    private _orientation: Cardinals;
+    private readonly _orientation: Cardinals;
 
     constructor(initialOrientation: Cardinals) {
         this._orientation = initialOrientation;
     }
+
+    /**
+     * Get the orientation of a Rover
+     * @return Carndinals
+     */
     getOrientation(): Cardinals {
         return this._orientation;
     }
 
-    turn(direction: 'right' | 'left'): void {
+    /**
+     * Change the orientation
+     * @param direction {right | left}
+     * @return Orientation
+     */
+    turn(direction: 'right' | 'left'): Orientation {
         const rotationAngle = direction === 'right' ? 90 : -90;
-
-        this._orientation = (this._orientation + rotationAngle) % 360;
+        // return new orientation
+        return new Orientation((this._orientation + rotationAngle) % 360)
     }
 }

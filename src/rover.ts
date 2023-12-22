@@ -1,26 +1,48 @@
 import { Position } from "./Position";
 import { Cardinals, Orientation } from "./Orientation";
-import { Map } from "./Map";
+import { Planet } from './Planet'
+// Objet valeur (toutes ses propriétés sont sont identité)
+// SOLID : 
+// S => OK
+
+type Xcoordinates = 'right' | 'left'
+type Ycoordinates = -1 | 1
 
 class Rover {
-
-    private readonly _map: Map;
+    private readonly _map: Planet;
     private readonly _orientation: Orientation;
-
     public readonly position: Position;
     static Nord: Rover;
 
-    constructor(orientation: Orientation, position: Position, map: Map) {
+    /**
+     * Constructor - Create a new Rover
+     * @param orientation {Orientation} - the initial orientation of the Rover
+     * @param position {Position} - The initial position of the Rover
+     * @param planet {Planet} - The Planet the has landed on
+     */
+    constructor(orientation: Orientation, position: Position, planet: Planet) {
         this._orientation = orientation;
         this.position = position;
-        this._map = map;
+        this._map = planet;
     }
 
-    turn(direction: 'right' | 'left') {
+
+    land() {
+        const hasObstacle = this._map.hasObstacle();
+        const obstacles = this._map.obstacles()
+        hasObstacle ? console.log("do not land foo fast, there's obstacles at coordinates:" + JSON.stringify(obstacles)) : console.log('Aucun obstacle sur la planete')
+    }
+
+    turn(direction: Xcoordinates) {
         this._orientation.turn(direction)
     }
 
-    canMove(direction: 1 | -1): boolean {
+    /**
+     * Whether the Rover can move or not
+     * @param direction - The direction the Rover should move
+     * @return boolean
+     */
+    canMove(direction: Ycoordinates): boolean {
         const newPosition = this.calculateNewPosition(direction);
         const hasObstacle = this._map.hasObstacleAt(newPosition.x, newPosition.y);
 
@@ -32,7 +54,12 @@ class Rover {
         return true;
     }
 
-    move(direction: 1 | -1): Rover {
+    /**
+     * Move the Rover on the given direction
+     * @param direction - The direction the Rover should move
+     * @return Rover
+     */
+    move(direction: Ycoordinates): Rover {
         if (this.canMove(direction)) {
             const newPosition = this.calculateNewPosition(direction);
             console.log(newPosition);
@@ -44,7 +71,12 @@ class Rover {
         return this;
     }
 
-    private calculateNewPosition(direction: 1 | -1): Position {
+    /**
+     * Calculate the new position of the Rover
+     * @param direction - The direction the Rover should move
+     * @return Position
+     */
+    private calculateNewPosition(direction: Ycoordinates): Position {
         const movementMap: Record<Cardinals, Position> = {
             [Cardinals.Nord]: { x: this.position.x, y: this.position.y + direction },
             [Cardinals.Sud]: { x: this.position.x, y: this.position.y - direction },
@@ -62,7 +94,7 @@ class Rover {
 
 
     stop(): void {
-        console.log("Rover s'est arrêté.");
+        console.log("Rover stopped.");
     }
 }
 

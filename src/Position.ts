@@ -1,3 +1,5 @@
+
+// Entité
 export class Position {
     constructor(x: number, y: number) {
         this.x = x;
