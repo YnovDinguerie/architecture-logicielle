@@ -23,7 +23,6 @@ rover.move(-1)
 
 
 
-console.log(rover)
 
 // TODO:
 // Change Map with Planete class and implement Obstacle. Rover should detect Obstacle, stop and inform its position

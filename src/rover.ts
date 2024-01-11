@@ -47,7 +47,7 @@ class Rover {
         const hasObstacle = this._map.hasObstacleAt(newPosition.x, newPosition.y);
 
         if (hasObstacle) {
-            console.log("Il y a un obstacle à la prochaine position. Le rover ne peut pas se déplacer.");
+            console.log("Il y a un obstacle à la prochaine position. Le rover ne peut pas se déplacer en:" + JSON.stringify(newPosition));
             return false;
         }
 
