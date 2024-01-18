@@ -1,5 +1,5 @@
 export function multiplyAndFlatten(firstArray: Array<any>, secondArray: Array<any>) {
-    let elements = [];
+    let elements: any[][] = [];
 
     firstArray.forEach(a => secondArray.forEach(b => {
         let testCase = [];

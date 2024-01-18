@@ -11,7 +11,7 @@ type Ycoordinates = -1 | 1
 class Rover {
     private readonly _map: Planet;
     private readonly _orientation: Orientation;
-    public readonly position: Position;
+    public readonly _position: Position;
     static Nord: Rover;
 
     /**
@@ -22,7 +22,7 @@ class Rover {
      */
     constructor(orientation: Orientation, position: Position, planet: Planet) {
         this._orientation = orientation;
-        this.position = position;
+        this._position = position;
         this._map = planet;
     }
 
@@ -64,8 +64,8 @@ class Rover {
             const newPosition = this.calculateNewPosition(direction);
             console.log(newPosition);
 
-            this.position.x = newPosition.x;
-            this.position.y = newPosition.y;
+            this._position.x = newPosition.x;
+            this._position.y = newPosition.y;
         }
 
         return this;
@@ -78,10 +78,10 @@ class Rover {
      */
     private calculateNewPosition(direction: Ycoordinates): Position {
         const movementMap: Record<Cardinals, Position> = {
-            [Cardinals.Nord]: { x: this.position.x, y: this.position.y + direction },
-            [Cardinals.Sud]: { x: this.position.x, y: this.position.y - direction },
-            [Cardinals.Est]: { x: this.position.x + direction, y: this.position.y },
-            [Cardinals.Ouest]: { x: this.position.x - direction, y: this.position.y },
+            [Cardinals.Nord]: { x: this._position.x, y: this._position.y + direction },
+            [Cardinals.Sud]: { x: this._position.x, y: this._position.y - direction },
+            [Cardinals.Est]: { x: this._position.x + direction, y: this._position.y },
+            [Cardinals.Ouest]: { x: this._position.x - direction, y: this._position.y },
         };
 
         const newPosition: Position = movementMap[this._orientation.getOrientation()];
@@ -98,7 +98,7 @@ class Rover {
     }
 }
 
-export default Rover
+export default Rover;
 
 
 

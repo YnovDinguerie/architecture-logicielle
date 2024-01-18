@@ -1,14 +1,14 @@
 // Objet valeur
 export enum DirectionEnum {
-    Forward = 1,
-    Backward = -1
+	Forward = 1,
+	Backward = -1,
 }
 
 // Objet valeur
 export class Direction {
-    private _direction
+	public _direction;
 
-    constructor(direction: DirectionEnum) {
-        this._direction = direction
-    }
+	constructor(direction: DirectionEnum) {
+		this._direction = direction;
+	}
 }

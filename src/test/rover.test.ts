@@ -1,10 +1,13 @@
-import Rover from '../Rover'
+import { Cardinals, Orientation } from '../topologie/Orientation'
+import Rover from '../topologie/Rover'
 
 describe('Rover class test', () => {
 
+    const cardinalsValue: Cardinals = Cardinals.Nord;
+    const orientationValue: Orientation = cardinalsValue as unknown as Orientation;
 
     it('should initialize with corect position', () => {
-        const rover = new Rover(0, { x: 0, y: 0 })
+        const rover = new Rover(orientationValue, { x: 0, y: 0 }, { width: 4, height: 4} )
 
         expect(rover.position).toEqual({ x: 0, y: 0 })
     })
