@@ -1,4 +1,4 @@
-import { Position } from "../../Position";
+import { Position } from "../../topologie/Position";
 import Rover, { Orientation } from "../../Rover";
 
 export class RoverBuilder {

@@ -20,9 +20,3 @@ rover.turn('right')
 rover.move(1)
 rover.turn('right')
 rover.move(-1)
-
-// TODO:
-// Change Map with Planete class and implement Obstacle. Rover should detect Obstacle, stop and inform its position
-// Refactor code with SOLID principle and orthogonality
-
-// First, for each component, it should implement only one resposability

@@ -1,6 +1,6 @@
 import { Position } from "./Position";
 import { Cardinals, Orientation } from "./Orientation";
-import { Planet } from './Planet'
+import { Planet } from './environment/Planet'
 // Objet valeur (toutes ses propriétés sont sont identité)
 // SOLID : 
 // S => OK
