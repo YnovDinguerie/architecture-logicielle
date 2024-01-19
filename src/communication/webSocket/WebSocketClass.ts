@@ -16,17 +16,14 @@ import { InterpreterMessage } from '../../types/interpreterTypes';
 
 const obstacle1 = new Obstacle({ x: 1, y: 1 })
 const orientation = new Orientation(0)
-const position = new Position(0, 0)
-const planet = new Planet(5, 3)
+const position = new Position(10, 5)
+const planet = new Planet(20, 15)
 planet.addObstacle(obstacle1)
 
 
 const distanceBetweenRoverAndController = 3
-let rover = new Rover(orientation, position, planet);
+const rover = new Rover(orientation, position, planet);
 const serverPort = 3000
-
-
-
 
 export class WebSocketClass {
     private app: Express;
@@ -35,7 +32,7 @@ export class WebSocketClass {
     private rover: Rover
 
 
-    constructor() {
+    constructor(rover: Rover) {
         this.app = express();
         this.server = http.createServer(this.app);
         this.io = new SocketIOServer(this.server);
@@ -84,5 +81,5 @@ export class WebSocketClass {
     }
 }
 
-const marsRoverApp = new WebSocketClass();
+const marsRoverApp = new WebSocketClass(rover);
 marsRoverApp.start();

@@ -3,8 +3,8 @@ import Rover from "./topologie/Rover"
 
 const socket = io('http://localhost:3000/')
 const btn = document.querySelector('#btn')
-const roverPosition = document.querySelector('#roverPosition')
-const roverOrientation = document.querySelector('#roverOrientation')
+// const roverPosition = document.querySelector('#roverPosition')
+// const roverOrientation = document.querySelector('#roverOrientation')
 const roverAvance = document.querySelector('#roverAvance')
 const roverRecule = document.querySelector('#roverRecule')
 const roverGauche = document.querySelector('#roverGauche')
@@ -64,10 +64,10 @@ const updateMap = (roverMap, roverPosition) => {
 
 socket.on('test', (rover) => {
     console.log(rover)
-    roverPosition ?
-        roverPosition.innerHTML = JSON.stringify(rover.position) : null
-    roverOrientation ?
-        roverOrientation.innerHTML = JSON.stringify(rover.orientation) : null
+    // roverPosition ?
+    //     roverPosition.innerHTML = JSON.stringify(rover.position) : null
+    // roverOrientation ?
+    //     roverOrientation.innerHTML = JSON.stringify(rover.orientation) : null
 
     updateMap(rover._map, rover.position)
 })
