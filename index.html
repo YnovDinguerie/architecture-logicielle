@@ -6,40 +6,28 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite + TS</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+
+  </script>
+
 </head>
 
 <body>
 
   <h1>Socket.IO Test</h1>
-  <button onclick="command('Rover','avance')" id="btn">avance</button>
-  <button onclick="command('Rover','recule')" id="btn">recule</button>
-  <button onclick="command('Rover','gauche')" id="btn">tourne a gauche</button>
-  <button onclick="command('Rover','droite')" id="btn">tourne a droite</button>
+  <button id="roverAvance">avance</button>
+  <button id="roverRecule">recule</button>
+  <button id="roverGauche">tourne a gauche</button>
+  <button id="roverDroite">tourne a droite</button>
   <p id="roverPosition"></p>
   <p id="roverOrientation"></p>
+  <div class="map"></div>
   <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"
     integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
     crossorigin="anonymous"></script>
-  <script>
-    const socket = io('http://localhost:3000/')
-    const btn = document.querySelector('#btn')
-    const roverPosition = document.querySelector('#roverPosition')
-    const roverOrientation = document.querySelector('#roverOrientation')
-    const command = (target, action) => {
-      const data = { target: target, action: action }
-      socket.emit('command', data)
-    }
+  <script type="module" src="/src/main.js"></script>
 
-
-    socket.on('test', (e) => {
-      console.log(e)
-      roverPosition.innerHTML = JSON.stringify(e.position)
-      roverOrientation.innerHTML = JSON.stringify(e.orientation)
-    })
-
-  </script>
-
-  <script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>

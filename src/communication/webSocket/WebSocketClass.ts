@@ -53,8 +53,8 @@ export class WebSocketClass {
     private setupSocket() {
         this.io.on('connection', (socket: Socket) => {
             console.log('a user connected');
+            this.io.emit('connection', this.rover)
             socket.on('command', (command: InterpreterMessage) => {
-                console.log(command);
                 this.sendCommand(command)
             });
         });
@@ -63,6 +63,7 @@ export class WebSocketClass {
     public start() {
         this.server.listen(serverPort, () => {
             console.log(`listening on port ${serverPort}`);
+
         });
     }
 

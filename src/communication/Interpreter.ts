@@ -31,8 +31,6 @@ export class Interpreter {
                 this._rover.turn('right')
                 break
         }
-        console.log(this._rover.position)
-        console.log(this._rover.orientation)
         this._io.emit('test', this._rover)
     }
 
