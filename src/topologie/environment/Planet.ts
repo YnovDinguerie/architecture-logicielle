@@ -1,4 +1,4 @@
-import { Obstacle } from "./Obstacle";
+import { Obstacle } from "../Obstacle";
 
 // Entité
 export class Planet {

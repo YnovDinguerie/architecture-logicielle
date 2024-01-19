@@ -9,13 +9,36 @@
 </head>
 
 <body>
-  <div id="app"></div>
+
   <h1>Socket.IO Test</h1>
-  <script src="/socket.io/socket.io.js"></script>
+  <button onclick="command('Rover','avance')" id="btn">avance</button>
+  <button onclick="command('Rover','recule')" id="btn">recule</button>
+  <button onclick="command('Rover','gauche')" id="btn">tourne a gauche</button>
+  <button onclick="command('Rover','droite')" id="btn">tourne a droite</button>
+  <p id="roverPosition"></p>
+  <p id="roverOrientation"></p>
+  <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"
+    integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
+    crossorigin="anonymous"></script>
   <script>
-    const socket = io();
-    // Your Socket.IO logic here
+    const socket = io('http://localhost:3000/')
+    const btn = document.querySelector('#btn')
+    const roverPosition = document.querySelector('#roverPosition')
+    const roverOrientation = document.querySelector('#roverOrientation')
+    const command = (target, action) => {
+      const data = { target: target, action: action }
+      socket.emit('command', data)
+    }
+
+
+    socket.on('test', (e) => {
+      console.log(e)
+      roverPosition.innerHTML = JSON.stringify(e.position)
+      roverOrientation.innerHTML = JSON.stringify(e.orientation)
+    })
+
   </script>
+
   <script type="module" src="/src/main.ts"></script>
 </body>
 

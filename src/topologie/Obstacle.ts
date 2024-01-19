@@ -1,8 +1,3 @@
-// export enum DirectionEnum {
-//     Forward = 1,
-//     Backward = -1
-// }
-
 import { Position } from "./Position";
 
 // Entité
