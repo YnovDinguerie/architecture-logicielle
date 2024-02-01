@@ -41,3 +41,12 @@ We made an architectural schema to show the different modules and to what module
 - Loïc Bozon
 - Yohann Tonerre
 - Mickael Brunet
+
+
+
+## Start project
+# serve
+`yarn dev`
+
+# websocket
+`ts-node ./src/communication/webSocket/WebSocketClass.ts`
