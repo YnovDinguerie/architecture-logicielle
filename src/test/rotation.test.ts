@@ -17,15 +17,14 @@ describe("Un Rover peut tourner", () => {
 			orientationSuivanteHoraire: Orientation
 		) => {
 			let roverTesté = new RoverBuilder().Orienté(orientationTestée).Build();
-
 			let roverTémoin = new RoverBuilder()
 				.Orienté(orientationSuivanteHoraire)
 				.Build();
-
-			roverTesté = roverTesté.turn("right").move(DirectionEnum.Forward);
+			roverTesté.turn("right");
+			roverTesté.move(1);
 			roverTémoin = roverTémoin.move(1);
 
-			expect(roverTesté._position).toEqual(roverTémoin._position);
+			expect(roverTesté.position).toEqual(roverTémoin.position);
 		}
 	);
 });

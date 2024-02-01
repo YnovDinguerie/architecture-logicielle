@@ -73,6 +73,7 @@ class Rover {
 		return this;
 	}
 
+
 	/**
 	 * Calculate the new position of the Rover
 	 * @param direction - The direction the Rover should move
