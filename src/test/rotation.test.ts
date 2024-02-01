@@ -10,8 +10,8 @@ describe("Un Rover peut tourner", () => {
 		[new Orientation(Cardinals.Ouest), new Orientation(Cardinals.Nord)],
 	])(
 		"ETANT DONNE un rover orienté {orientationTestée}" +
-			"QUAND il tourne a droite et avance" +
-			"ALORS son comportement est le même qu'un Rover orienté {orientationSuivanteHoraire} faisant de même",
+		"QUAND il tourne a droite et avance" +
+		"ALORS son comportement est le même qu'un Rover orienté {orientationSuivanteHoraire} faisant de même",
 		(
 			orientationTestée: Orientation,
 			orientationSuivanteHoraire: Orientation
@@ -20,8 +20,8 @@ describe("Un Rover peut tourner", () => {
 			let roverTémoin = new RoverBuilder()
 				.Orienté(orientationSuivanteHoraire)
 				.Build();
-			roverTesté.turn("right");
-			roverTesté.move(1);
+			roverTesté = roverTesté.turn("right");
+			roverTesté = roverTesté.move(1);
 			roverTémoin = roverTémoin.move(1);
 
 			expect(roverTesté.position).toEqual(roverTémoin.position);

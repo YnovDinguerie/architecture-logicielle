@@ -13,12 +13,7 @@ const rotationMap = {
 
 // Objet valeur
 export class Orientation {
-<<<<<<< HEAD
-	orientation: Cardinals;
-    static Cardinals: any;
-=======
     orientation: Cardinals;
->>>>>>> 38c5a9003fb2f681c304059220b83d2a0bcabe18
 
     constructor(initialOrientation: Cardinals) {
         this.orientation = initialOrientation;

@@ -10,12 +10,11 @@ describe("Rover", () => {
 
 	beforeEach(() => {
 		roverBuilder = new RoverBuilder();
-		Planet.addObstacle = jest.fn();
+
 	});
 
 	test("should land on the planet", () => {
 		const rover = roverBuilder.Build();
-		rover.land();
 		expect(rover.orientation).toStrictEqual(new Orientation(Cardinals.Nord));
 		expect(rover.position.x).toStrictEqual(0);
 		expect(rover.position.y).toStrictEqual(0);
