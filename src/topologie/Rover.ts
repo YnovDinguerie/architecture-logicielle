@@ -9,7 +9,6 @@ class Rover {
 	private readonly _map: Planet;
 	public readonly orientation: Orientation;
 	public readonly position: Position;
-	static Nord: Rover;
 
 	constructor(orientation: Orientation, position: Position, planet: Planet) {
 		this.orientation = orientation;

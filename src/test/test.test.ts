@@ -2,7 +2,6 @@ import Rover from "../topologie/Rover";
 import { Cardinals, Orientation } from "../topologie/Orientation";
 import { Position } from "../topologie/Position";
 import { Planet } from "../topologie/environment/Planet";
-import { RoverError } from "../RoverError";
 import { RoverBuilder } from "./utilities/RoverBuilder";
 import { Obstacle } from "../topologie/environment/Obstacle";
 

@@ -31,7 +31,6 @@ export class WebSocketClass {
     private io: SocketIOServer;
     private rover: Rover
 
-
     constructor(rover: Rover) {
         this.app = express();
         this.server = http.createServer(this.app);
