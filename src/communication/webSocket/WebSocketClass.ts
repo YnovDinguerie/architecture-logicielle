@@ -19,7 +19,7 @@ const planet = new Planet(20, 15)
 planet.addObstacle(obstacle1)
 
 
-const distanceBetweenRoverAndController = 3
+const distanceBetweenRoverAndController = 30
 const rover = new Rover(orientation, position, planet);
 const serverPort = 3000
 
@@ -64,13 +64,13 @@ export class WebSocketClass {
      */
     public sendCommand(command: InterpreterMessage) {
         if (distanceBetweenRoverAndController < 4) {
-            const interpreter = new Interpreter(this.rover, this.io);
+            const interpreter = new Interpreter(this.rover);
             this.rover = interpreter.interpret(command);
             this.io.emit('rover-action', this.rover)
         }
         else {
-            const repeter = new Repeter(this.rover, command, this.io)
-            this.rover = repeter.repeat()._rover;
+            const repeter = new Repeter(this.rover, command)
+            this.rover = repeter.repeat();
             this.io.emit('rover-action', this.rover)
         }
     }

@@ -1,4 +1,4 @@
-import { io, Socket } from "socket.io-client"
+import { io } from "socket.io-client"
 
 const socket = io('http://localhost:3000/')
 const roverAvance = document.querySelector('#roverAvance')
@@ -29,7 +29,7 @@ socket.on('connection', (rover) => {
 
 const map = document.querySelector('.map')
 let mapArray = []
-const updateMap = (roverMap, roverPosition) => {
+const updateMap = (roverMap, roverPosition, roverOrientation) => {
     map.innerHTML = ''
     for (let i = 0; i < roverMap.height; i++) {
         mapArray.push([])
@@ -45,7 +45,10 @@ const updateMap = (roverMap, roverPosition) => {
         }
     }
     const rover = map.childNodes[roverPosition.y].childNodes[roverPosition.x]
-    rover.classList = 'tile rover'
+    console.log(roverOrientation)
+
+    console.log(getOrientation(roverOrientation))
+    rover.classList = `tile rover ${getOrientation(roverOrientation)}`
 
     for (const obstacle of roverMap._foundedObstacles) {
         const obstacleNode = map.childNodes[obstacle.y].childNodes[obstacle.x]
@@ -53,6 +56,19 @@ const updateMap = (roverMap, roverPosition) => {
     }
 }
 
+const getOrientation = (orientation) => {
+    switch (orientation) {
+        case 0:
+            return 'bot'
+        case 90:
+            return 'right'
+        case 180:
+            return 'top'
+        case 270:
+            return 'left'
+    }
+}
+
 socket.on('rover-action', (rover) => {
-    updateMap(rover._map, rover.position)
+    updateMap(rover._map, rover.position, rover.orientation.orientation)
 })

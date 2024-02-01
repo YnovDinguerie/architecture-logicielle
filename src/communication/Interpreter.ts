@@ -4,10 +4,8 @@ import { InterpreterMessage } from "../types/interpreterTypes";
 
 export class Interpreter {
     _rover: Rover
-    _io: SocketIOServer
-    constructor(rover: Rover, io: SocketIOServer) {
+    constructor(rover: Rover) {
         this._rover = rover
-        this._io = io
     }
 
     /**
