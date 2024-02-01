@@ -50,3 +50,6 @@ We made an architectural schema to show the different modules and to what module
 
 # websocket
 `ts-node ./src/communication/webSocket/WebSocketClass.ts`
+
+# test
+`npx jest`
