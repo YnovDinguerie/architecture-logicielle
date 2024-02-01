@@ -42,7 +42,7 @@ describe("Tests mouvement", () => {
 				.Orienté(new Orientation(Cardinals.Sud))
 				.Build();
 
-				rover =rover.move(DirectionEnum.Forward);
+			rover = rover.move(DirectionEnum.Forward);
 
 			if (y) {
 				expect(rover.position.x).toBe(x);
@@ -62,7 +62,7 @@ describe("Tests mouvement", () => {
 				.Orienté(new Orientation(Cardinals.Est))
 				.Build();
 
-				rover = rover.move(DirectionEnum.Forward);
+			rover = rover.move(DirectionEnum.Forward);
 
 			expect(rover.position.x).toBe(x + 1);
 			expect(rover.position.y).toBe(y);
@@ -80,7 +80,7 @@ describe("Tests mouvement", () => {
 				.Orienté(new Orientation(Cardinals.Ouest))
 				.Build();
 
-				rover = rover.move(DirectionEnum.Forward);
+			rover = rover.move(DirectionEnum.Forward);
 
 			expect(rover.position.x).toBe(outOfMap(x - 1));
 			expect(rover.position.y).toBe(y);
