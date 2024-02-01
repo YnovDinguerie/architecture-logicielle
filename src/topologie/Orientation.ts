@@ -9,6 +9,7 @@ export enum Cardinals {
 // Objet valeur
 export class Orientation {
 	orientation: Cardinals;
+    static Cardinals: any;
 
 	constructor(initialOrientation: Cardinals) {
 		this.orientation = initialOrientation;

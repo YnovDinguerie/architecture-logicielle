@@ -5,7 +5,7 @@ import { Planet } from "../../topologie/environment/Planet";
 
 export class RoverBuilder {
 	private orientation: Orientation = new Orientation(Cardinals.Nord);
-	private position: Position = { x: 1, y: 1 };
+	private position: Position = { x: 0, y: 0 };
 	private planet: Planet = new Planet(4, 4);
 	public Orienté(orientation: Orientation): RoverBuilder {
 		this.orientation = orientation;
