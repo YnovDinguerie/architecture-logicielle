@@ -1,35 +1,45 @@
 // Objet valeur
 export enum Cardinals {
-	Nord = 0,
-	Est = 90,
-	Sud = 180,
-	Ouest = 270,
+    Nord = 0,
+    Est = 90,
+    Sud = 180,
+    Ouest = 270,
 }
+
+const rotationMap = {
+    'right': -90,
+    'left': 90
+};
 
 // Objet valeur
 export class Orientation {
+<<<<<<< HEAD
 	orientation: Cardinals;
     static Cardinals: any;
+=======
+    orientation: Cardinals;
+>>>>>>> 38c5a9003fb2f681c304059220b83d2a0bcabe18
 
-	constructor(initialOrientation: Cardinals) {
-		this.orientation = initialOrientation;
-	}
+    constructor(initialOrientation: Cardinals) {
+        this.orientation = initialOrientation;
+    }
 
-	/**
-	 * Get the orientation of a Rover
-	 * @return Carndinals
-	 */
-	getOrientation(): Cardinals {
-		return this.orientation;
-	}
+    /**
+     * Get the orientation of a Rover
+     * @return Carndinals
+     */
+    getOrientation(): Cardinals {
+        return this.orientation;
+    }
 
-	/**
-	 * Change the orientation
-	 * @param direction {right | left}
-	 * @return Orientation
-	 */
-	turn(direction: "right" | "left"): void {
-		const rotationAngle = direction === "right" ? 90 : -90;
-		this.orientation = (360 + (this.orientation + rotationAngle)) % 360;
-	}
+    /**
+     * Change the orientation
+     * @param direction {right | left}
+     * @return Orientation
+     */
+    turn(direction: 'right' | 'left'): Orientation {
+        const rotationAngle = rotationMap[direction];
+        this.orientation = (360 + (this.orientation + rotationAngle)) % 360;
+        return this
+    }
 }

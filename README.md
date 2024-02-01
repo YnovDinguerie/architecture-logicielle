@@ -44,9 +44,15 @@ We made an architectural schema to show the different modules and to what module
 
 
 
+## installation
+`yarn`
+
 ## Start project
 # serve
 `yarn dev`
 
 # websocket
 `ts-node ./src/communication/webSocket/WebSocketClass.ts`
+
+# test
+`npx jest`

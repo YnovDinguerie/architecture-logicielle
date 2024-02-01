@@ -1,11 +1,4 @@
 
-// Entité
 export class Position {
-    constructor(x: number, y: number) {
-        this.x = x;
-        this.y = y;
-    }
-
-    x: number;
-    y: number;
+    constructor(readonly x: number, readonly y: number) { }
 }

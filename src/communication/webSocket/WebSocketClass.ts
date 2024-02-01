@@ -9,7 +9,7 @@ import { Position } from '../../topologie/Position';
 import { Planet } from '../../topologie/environment/Planet';
 import Rover from '../../topologie/Rover';
 import { Interpreter } from '../Interpreter';
-import { Obstacle } from '../../topologie/Obstacle';
+import { Obstacle } from '../../topologie/environment/Obstacle';
 import { Repeter } from '../Repeter';
 import { InterpreterMessage } from '../../types/interpreterTypes';
 
@@ -21,7 +21,7 @@ const planet = new Planet(20, 15)
 planet.addObstacle(obstacle1)
 
 
-const distanceBetweenRoverAndController = 3
+const distanceBetweenRoverAndController = 58
 const rover = new Rover(orientation, position, planet);
 const serverPort = 3000
 
@@ -60,7 +60,6 @@ export class WebSocketClass {
     public start() {
         this.server.listen(serverPort, () => {
             console.log(`listening on port ${serverPort}`);
-
         });
     }
 
@@ -71,12 +70,14 @@ export class WebSocketClass {
         if (distanceBetweenRoverAndController < 4) {
             console.log('on est direct depuis la station ')
             const interpreter = new Interpreter(this.rover, this.io);
-            interpreter.interpret(command);
+            this.rover = interpreter.interpret(command);
+            this.io.emit('test', this.rover)
         }
         else {
             console.log('on est sur le repeteur ')
             const repeter = new Repeter(this.rover, command, this.io)
-            repeter.repeat();
+            this.rover = repeter.repeat()._rover;
+            this.io.emit('test', this.rover)
         }
     }
 }
