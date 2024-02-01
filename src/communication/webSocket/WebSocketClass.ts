@@ -1,8 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import http, { Server as HTTPServer } from 'http';
 import { Server as SocketIOServer, Socket } from 'socket.io';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
 import path from 'node:path';
 import { Orientation } from '../../topologie/Orientation';
 import { Position } from '../../topologie/Position';
@@ -21,7 +19,7 @@ const planet = new Planet(20, 15)
 planet.addObstacle(obstacle1)
 
 
-const distanceBetweenRoverAndController = 58
+const distanceBetweenRoverAndController = 3
 const rover = new Rover(orientation, position, planet);
 const serverPort = 3000
 
@@ -48,7 +46,6 @@ export class WebSocketClass {
 
     private setupSocket() {
         this.io.on('connection', (socket: Socket) => {
-            console.log('a user connected');
             this.io.emit('connection', this.rover)
             socket.on('command', (command: InterpreterMessage) => {
                 this.sendCommand(command)
@@ -67,16 +64,14 @@ export class WebSocketClass {
      */
     public sendCommand(command: InterpreterMessage) {
         if (distanceBetweenRoverAndController < 4) {
-            console.log('on est direct depuis la station ')
             const interpreter = new Interpreter(this.rover, this.io);
             this.rover = interpreter.interpret(command);
-            this.io.emit('test', this.rover)
+            this.io.emit('rover-action', this.rover)
         }
         else {
-            console.log('on est sur le repeteur ')
             const repeter = new Repeter(this.rover, command, this.io)
             this.rover = repeter.repeat()._rover;
-            this.io.emit('test', this.rover)
+            this.io.emit('rover-action', this.rover)
         }
     }
 }

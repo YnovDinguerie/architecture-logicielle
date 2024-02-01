@@ -53,6 +53,6 @@ const updateMap = (roverMap, roverPosition) => {
     }
 }
 
-socket.on('test', (rover) => {
+socket.on('rover-action', (rover) => {
     updateMap(rover._map, rover.position)
 })

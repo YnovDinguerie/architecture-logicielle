@@ -1,8 +1,7 @@
 import Rover from "../topologie/Rover";
 import { InterpreterMessage } from "../types/interpreterTypes";
 import { Interpreter } from "./Interpreter";
-import { WebSocketClass } from "./webSocket/WebSocketClass";
-import { Server as SocketIOServer, Socket } from 'socket.io';
+import { Server as SocketIOServer } from 'socket.io';
 
 export class Repeter {
     private rover: Rover

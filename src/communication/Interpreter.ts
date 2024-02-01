@@ -1,8 +1,6 @@
 import Rover from "../topologie/Rover"
-import { Server as SocketIOServer, Socket } from 'socket.io';
+import { Server as SocketIOServer } from 'socket.io';
 import { InterpreterMessage } from "../types/interpreterTypes";
-
-
 
 export class Interpreter {
     _rover: Rover
