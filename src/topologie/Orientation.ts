@@ -3,7 +3,7 @@ export enum Cardinals {
     Nord = 0,
     Est = 90,
     Sud = 180,
-    Ouest = 270
+    Ouest = 270,
 }
 
 const rotationMap = {

@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     "testEnvironment": "node",
     "extensionsToTreatAsEsm": [".jsx", ".ts", ".tsx"],
     "preset": 'ts-jest',

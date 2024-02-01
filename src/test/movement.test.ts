@@ -22,8 +22,8 @@ describe("Tests mouvement", () => {
 
 			rover.move(DirectionEnum.Forward);
 
-			expect(rover._position.x).toBe(x);
-			expect(rover._position.y).toBe(y + 1);
+			expect(rover.position.x).toBe(x);
+			expect(rover.position.y).toBe(y + 1);
 		}
 	);
 
@@ -40,8 +40,8 @@ describe("Tests mouvement", () => {
 
 			rover.move(DirectionEnum.Forward);
 
-			expect(rover._position.x).toBe(x);
-			expect(rover._position.y).toBe(y - 1);
+			expect(rover.position.x).toBe(x);
+			expect(rover.position.y).toBe(y - 1);
 		}
 	);
 
@@ -58,8 +58,8 @@ describe("Tests mouvement", () => {
 
 			rover.move(DirectionEnum.Forward);
 
-			expect(rover._position.x).toBe(x + 1);
-			expect(rover._position.y).toBe(y);
+			expect(rover.position.x).toBe(x + 1);
+			expect(rover.position.y).toBe(y);
 		}
 	);
 
@@ -76,8 +76,8 @@ describe("Tests mouvement", () => {
 
 			rover.move(DirectionEnum.Forward);
 
-			expect(rover._position.x).toBe(x - 1);
-			expect(rover._position.y).toBe(y);
+			expect(rover.position.x).toBe(x - 1);
+			expect(rover.position.y).toBe(y);
 		}
 	);
 });
