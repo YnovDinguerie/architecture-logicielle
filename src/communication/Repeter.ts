@@ -12,7 +12,6 @@ export class Repeter {
         this.rover = rover
         this.command = command
         this.io = io
-
     }
 
     /**
@@ -21,5 +20,6 @@ export class Repeter {
     public repeat() {
         const interpreter = new Interpreter(this.rover, this.io);
         interpreter.interpret(this.command);
+        return interpreter
     }
 }

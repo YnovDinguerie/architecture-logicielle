@@ -1,12 +1,10 @@
 import { io, Socket } from "socket.io-client"
 
 const socket = io('http://localhost:3000/')
-const btn = document.querySelector('#btn')
 const roverAvance = document.querySelector('#roverAvance')
 const roverRecule = document.querySelector('#roverRecule')
 const roverGauche = document.querySelector('#roverGauche')
 const roverDroite = document.querySelector('#roverDroite')
-
 
 roverAvance.addEventListener('click', () => {
     command('Rover', 'avance')
@@ -49,9 +47,8 @@ const updateMap = (roverMap, roverPosition) => {
     const rover = map.childNodes[roverPosition.y].childNodes[roverPosition.x]
     rover.classList = 'tile rover'
 
-    for (const obstacle of roverMap._obstacles) {
-        const obstaclePosition = obstacle.position
-        const obstacleNode = map.childNodes[obstaclePosition.y].childNodes[obstaclePosition.x]
+    for (const obstacle of roverMap._foundedObstacles) {
+        const obstacleNode = map.childNodes[obstacle.y].childNodes[obstacle.x]
         obstacleNode.classList = 'tile obstacle'
     }
 }

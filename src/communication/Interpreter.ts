@@ -16,22 +16,21 @@ export class Interpreter {
      * Interprete the message received from the mission control and translate it to the rover
      */
     public interpret(cmd: InterpreterMessage) {
-        console.log(cmd.action)
         switch (cmd.action) {
             case 'avance':
-                this._rover.move(1)
+                this._rover = this._rover.move(1)
                 break
             case 'recule':
-                this._rover.move(-1)
+                this._rover = this._rover.move(-1)
                 break
             case 'gauche':
-                this._rover.turn('left')
+                this._rover = this._rover.turn('left')
                 break
             case 'droite':
-                this._rover.turn('right')
+                this._rover = this._rover.turn('right')
                 break
         }
-        this._io.emit('test', this._rover)
+        return this._rover
     }
 
 }

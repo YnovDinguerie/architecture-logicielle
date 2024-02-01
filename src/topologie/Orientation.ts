@@ -7,8 +7,8 @@ export enum Cardinals {
 }
 
 const rotationMap = {
-    'right': 90,
-    'left': -90
+    'right': -90,
+    'left': 90
 };
 
 // Objet valeur
@@ -32,8 +32,9 @@ export class Orientation {
      * @param direction {right | left}
      * @return Orientation
      */
-    turn(direction: 'right' | 'left'): void {
+    turn(direction: 'right' | 'left'): Orientation {
         const rotationAngle = rotationMap[direction];
         this.orientation = (360 + (this.orientation + rotationAngle)) % 360;
+        return this
     }
 }

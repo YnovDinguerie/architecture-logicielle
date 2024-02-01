@@ -1,7 +1,6 @@
 import { Position } from "./Position";
 import { Cardinals, Orientation } from "./Orientation";
 import { Planet } from './environment/Planet'
-import { RoverError } from "../RoverError";
 
 type Xcoordinates = "right" | "left";
 type Ycoordinates = -1 | 1;
@@ -18,22 +17,17 @@ class Rover {
 		this._map = planet;
 	}
 
-	land() {
-		const hasObstacle = this._map.hasObstacle();
-		const obstacles = this._map.obstacles()
-	}
-
 	turn(direction: Xcoordinates) {
-		this.orientation.turn(direction)
+		const newOrientation = this.orientation.turn(direction)
+		const rover = new Rover(newOrientation, this.position, this._map);
+		return rover
 	}
 
 	canMove(direction: Ycoordinates): boolean {
 		const newPosition = this.calculateNewPosition(direction);
-		const hasObstacle = this._map.hasObstacleAt(newPosition.x, newPosition.y);
+		const hasObstacle = this._map.checkObstacleAtPosition(newPosition)
 
 		if (hasObstacle) {
-			console.log("Il y a un obstacle à la prochaine position. Le rover ne peut pas se déplacer en:" + JSON.stringify(newPosition));
-			new RoverError(`Il y a un obstacle à la prochaine position.Le rover ne peut pas se déplacer en: ${JSON.stringify(newPosition)}`, 404)
 			return false
 		}
 		return true;
@@ -42,8 +36,8 @@ class Rover {
 	move(direction: Ycoordinates): Rover {
 		if (this.canMove(direction)) {
 			const newPosition = this.calculateNewPosition(direction);
-			this.position.x = newPosition.x;
-			this.position.y = newPosition.y;
+			const rover = new Rover(this.orientation, newPosition, this._map);
+			return rover
 		}
 		return this;
 	}
@@ -61,10 +55,5 @@ class Rover {
 			y: (newPosition.y + this._map.height) % this._map.height,
 		};
 	}
-
-	stop(): void {
-		console.log("Rover stopped.");
-	}
 }
-
 export default Rover;
