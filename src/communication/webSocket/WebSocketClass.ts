@@ -10,6 +10,7 @@ import { Interpreter } from '../Interpreter';
 import { Obstacle } from '../../topologie/environment/Obstacle';
 import { Repeter } from '../Repeter';
 import { InterpreterMessage } from '../../types/interpreterTypes';
+import { config } from '../../config';
 
 
 const obstacle1 = new Obstacle({ x: 1, y: 1 })
@@ -19,7 +20,6 @@ const planet = new Planet(20, 15)
 planet.addObstacle(obstacle1)
 
 
-const distanceBetweenRoverAndController = 30
 const rover = new Rover(orientation, position, planet);
 const serverPort = 3000
 
@@ -63,7 +63,7 @@ export class WebSocketClass {
      * Send a command to the Rover via a direct way or via the Repeater
      */
     public sendCommand(command: InterpreterMessage) {
-        if (distanceBetweenRoverAndController < 4) {
+        if (config.distanceBetweenRoverAndController < 4) {
             const interpreter = new Interpreter(this.rover);
             this.rover = interpreter.interpret(command);
             this.io.emit('rover-action', this.rover)

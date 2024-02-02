@@ -24,7 +24,7 @@ const command = (target, action) => {
     socket.emit('command', data)
 }
 socket.on('connection', (rover) => {
-    updateMap(rover._map, rover.position)
+    updateMap(rover._map, rover.position, rover.orientation.orientation)
 })
 
 const map = document.querySelector('.map')
@@ -45,9 +45,7 @@ const updateMap = (roverMap, roverPosition, roverOrientation) => {
         }
     }
     const rover = map.childNodes[roverPosition.y].childNodes[roverPosition.x]
-    console.log(roverOrientation)
 
-    console.log(getOrientation(roverOrientation))
     rover.classList = `tile rover ${getOrientation(roverOrientation)}`
 
     for (const obstacle of roverMap._foundedObstacles) {
