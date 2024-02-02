@@ -61,4 +61,6 @@ We made an architectural schema to show the different modules and to what module
 Dans le fichier `config.ts` il est possible de changer la distance entre le rover et le controlleur. Cela permet d'utiliser le répéteur si les deux sont trop éloignés
 
 
+L'obstacle est par defaut en x:1 et y:1
+
 le schema est dans le dossier public
