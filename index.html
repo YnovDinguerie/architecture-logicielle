@@ -1,33 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <link rel="stylesheet" href="style.css" />
+    <script></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite + TS</title>
-  <link rel="stylesheet" href="style.css">
-  <script>
-
-  </script>
-
-</head>
-
-<body>
-
-  <h1>Socket.IO Test</h1>
-  <button id="roverAvance">avance</button>
-  <button id="roverRecule">recule</button>
-  <button id="roverGauche">tourne a gauche</button>
-  <button id="roverDroite">tourne a droite</button>
-  <p id="roverPosition"></p>
-  <p id="roverOrientation"></p>
-  <div class="map"></div>
-  <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"
-    integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
-    crossorigin="anonymous"></script>
-  <script type="module" src="/src/main.js"></script>
-
-</body>
-
+  <body>
+    <h1>Architecture logicielle</h1>
+    <div class="container-direction">
+      <button id="roverAvance" title="↑">Avancer</button>
+      <div class="left-right">
+        <button id="roverGauche" title="⭯">Tourner a gauche</button>
+        <button id="roverDroite" title="⭮">Tourner a droite</button>
+      </div>
+      <button id="roverRecule" title="↓">Recule</button>
+    </div>
+    <p id="roverPosition"></p>
+    <p id="roverOrientation"></p>
+    <div class="map"></div>
+    <script
+      src="https://cdn.socket.io/4.7.4/socket.io.min.js"
+      integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
