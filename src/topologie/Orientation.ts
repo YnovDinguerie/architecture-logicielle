@@ -11,7 +11,7 @@ const rotationMap = {
 };
 
 export class Orientation {
-    readonly orientation: Cardinals;
+    private readonly orientation: Cardinals;
 
     constructor(initialOrientation: Cardinals) {
         this.orientation = initialOrientation;

@@ -7,8 +7,8 @@ type Ycoordinates = -1 | 1;
 
 class Rover {
 	private readonly _map: Planet;
-	public readonly orientation: Orientation;
-	public readonly position: Position;
+	private readonly orientation: Orientation;
+	private readonly position: Position;
 
 	constructor(orientation: Orientation, position: Position, planet: Planet) {
 		this.orientation = orientation;

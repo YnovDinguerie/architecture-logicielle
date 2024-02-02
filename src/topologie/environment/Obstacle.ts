@@ -1,7 +1,7 @@
 import { Position } from "../Position";
 
 export class Obstacle {
-    public readonly position: Position;
+    private readonly position: Position;
     constructor(position: Position) {
         this.position = position;
     }
